@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Group Chat</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src="./javascripts/jquery.js"></script>
+		<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+		<script>
+			$(document).ready(function(){
+				var users = {};
+				var name = prompt("Please enter your name:");
+				users.name = name;
+				io = io.connect();
+				io.emit("got_a_new_user", {name: name, users: users});
+				
+				io.on("new_user", function(data){
+					$("#wrapper").append("<div class='box'><div class='box_name'>" + data.new_user_name + "</div><textarea class='box_content'></textarea></div>");
+				});
+
+				io.on("existing users", function(data){
+					$("#wrapper").append("<div class='box'><div class='box_name'>" + data.users + "</div><textarea id='box_content'></textarea></div>");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			
+		</div>
+	</body>
+</html>

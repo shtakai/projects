@@ -7,18 +7,25 @@
 		<script src="http://localhost:3000/socket.io/socket.io.js"></script>
 		<script>
 			$(document).ready(function(){
-				var users = {};
 				var name = prompt("Please enter your name:");
-				users.name = name;
 				io = io.connect();
-				io.emit("got_a_new_user", {name: name, users: users});
+				io.emit("got_a_new_user", {name: name});
 				
 				io.on("new_user", function(data){
-					$("#wrapper").append("<div class='box'><div class='box_name'>" + data.new_user_name + "</div><textarea class='box_content'></textarea></div>");
+					$("#wrapper").append("<div class='box' id='"+data.new_user_name+"'><div class='box_name'>" + data.new_user_name + "</div><textarea class='box_content'></textarea></div>");
 				});
 
-				io.on("existing users", function(data){
-					$("#wrapper").append("<div class='box'><div class='box_name'>" + data.users + "</div><textarea id='box_content'></textarea></div>");
+				io.on("existing_users", function(data){
+					for(var i in data.users)
+					{
+						$("#wrapper").append("<div class='box' id='"+data.users[i]+"'><div class='box_name'>" + data.users[i] + "</div><textarea class='box_content'></textarea></div>");
+					}
+				});
+
+				$(".box_content").keydown(function(){
+					var message = $(".box_content").val();
+					alert(message);
+					console.log(message);
 				});
 			});
 		</script>

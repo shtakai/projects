@@ -22,10 +22,11 @@
 					}
 				});
 
-				$(".box_content").keydown(function(){
-					var message = $(".box_content").val();
-					alert(message);
-					console.log(message);
+				$(".box_content").on("keypress", function(e){
+					alert("test");
+					var key_pressed = String.fromCharCode(e.which);
+					alert(key_pressed);
+					console.log("key pressed:", key_pressed);
 				});
 			});
 		</script>

@@ -9,20 +9,24 @@
 			$(document).ready(function(){
 				io = io.connect();
 
-				var name = prompt("Please enter your name:");
-				io.emit("new_user", {name: name});
+				io.emit("page_load");
+
+				io.on("get_user_name", function(req){
+					var name = prompt("Please enter your name:");
+					io.emit("new_user", {name: name});
+				});
 
 				io.on("load_messages", function(data){
 					console.log("all messages", data.messages);
 					for(var i in data.messages)
 					{
-						$("#message_board").append("<p>"+data.messages[i][name]+": "+data.messages[i][message]+"</p>");
+						$("#message_board").append("<p>"+data.messages[i].name+": "+data.messages[i].message+"</p>");
 					};
 				})
 
 				$("#new_message").submit(function(e){
 					e.preventDefault();
-					io.emit("new_message", {message: $("#message").val(), name: name});
+					io.emit("new_message", {message: $("#message").val()});
 				});
 
 				io.on("post_new_message", function(data){

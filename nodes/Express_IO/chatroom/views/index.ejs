@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Group Chat</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src="./javascripts/jquery.js"></script>
+		<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+		<script>
+			$(document).ready(function(){
+				var name = prompt("Please enter your name:");
+				io = io.connect();
+				io.emit("got_a_new_user", {name: name});
+				
+				io.on("new_user", function(data){
+					console.log(data.new_user_name);
+					console.log(data.user_no);
+					$("."+data.user_no).removeClass("invisible");
+					$(".name"+data.user_no).append(data.new_user_name);
+					$(".box").attr("id, data.new_user_name");
+					//$("#wrapper").append("<div class='box' id='"+data.new_user_name+"'><div class='box_name'>" + data.new_user_name + "</div><textarea class='box_content'></textarea></div>");
+				});
+
+				io.on("existing_users", function(data){
+					for(var i in data.users)
+					{
+						$("."+data.users[i].user_no).removeClass("invisible");
+						$(".name"+data.users[i].user_no).append(data.users[i].name);
+						$(".box").attr("id, "+data.users[i].name);
+					}
+				});
+
+				$("textarea[class^='text']").on("keypress",function(e){
+					alert("test");
+					var key_pressed = String.fromCharCode(e.which);
+					alert(key_pressed);
+					console.log("key pressed:", key_pressed);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="box invisible 1"><div class="box_name name1 invisible 1"></div><textarea class="box_content text1 invisible 1"></textarea></div>
+			<div class="box invisible 2"><div class="box_name name2 invisible 2"></div><textarea class="box_content text2 invisible 2"></textarea></div>
+			<div class="box invisible 3"><div class="box_name name3 invisible 3"></div><textarea class="box_content text3 invisible 3"></textarea></div>
+			<div class="box invisible 4"><div class="box_name name4 invisible 4"></div><textarea class="box_content text4 invisible 4"></textarea></div>
+			<div class="box invisible 5"><div class="box_name name5 invisible 5"></div><textarea class="box_content text5 invisible 5"></textarea></div>
+			<div class="box invisible 6"><div class="box_name name6 invisible 6"></div><textarea class="box_content text6 invisible 6"></textarea></div>
+			<div class="box invisible 7"><div class="box_name name7 invisible 7"></div><textarea class="box_content text7 invisible 7"></textarea></div>
+			<div class="box invisible 8"><div class="box_name name8 invisible 8"></div><textarea class="box_content text8 invisible 8"></textarea></div>
+			<div class="box invisible 9"><div class="box_name name9 invisible 9"></div><textarea class="box_content text9 invisible 9"></textarea></div>
+			<div class="box invisible 10"><div class="box_name name10 invisible 10"></div><textarea class="box_content text10 invisible 10"></textarea></div>
+		</div>
+	</body>
+</html>

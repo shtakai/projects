@@ -11,6 +11,13 @@
 		$(document).ready(function(){
 			io = io.connect();
 
+			io.emit("check_is_logged_in");
+			io.on("is_logged_in", function(data){
+				$("#error_message").html(data.message);
+				$("#login_form").find("input:not(:disabled)").prop("disabled",true);
+
+			});
+
 			$("#login_form").submit(function(e){
 				e.preventDefault();
 				io.emit("login", {
@@ -20,7 +27,7 @@
 			});
 
 			io.on("login_failed", function(data){
-				console.log("login failed");
+				$("#error_message").html("<p id='message'>"+data.message+"</p>");
 			})
 
 			io.on("login_redirect", function(data){
@@ -32,7 +39,7 @@
 <body>
 	<div id="wrapper">
 		<h1>Village88 Times</h1>
-		<p id="message"></p>
+		<div id="error_message"></div>
 		<form role="form" id="login_form">
 			<div class="form-group">
 				<label for="email">Email</label>

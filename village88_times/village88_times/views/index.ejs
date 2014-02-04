@@ -11,7 +11,16 @@
 		$(document).ready(function(){
 			io = io.connect();
 
+			io.emit("get_photos");
 			io.emit("check_is_logged_in");
+
+			io.on("users_photo_url", function(data){
+				for(var index in data.photo_url)
+				{
+					$("form").after("<img src='"+data.photo_url[index]['photo_url']+"'>");
+				}
+			})
+
 			io.on("is_logged_in", function(data){
 				$("#error_message").html(data.message);
 				$("#login_form").find("input:not(:disabled)").prop("disabled",true);
@@ -28,11 +37,11 @@
 
 			io.on("login_failed", function(data){
 				$("#error_message").html("<p id='message'>"+data.message+"</p>");
-			})
+			});
 
 			io.on("login_redirect", function(data){
 				window.location.replace(data.url);
-			})
+			});
 		});
 	</script>
 </head>
@@ -51,18 +60,6 @@
 			</div>
 			<input type="submit" value="Login" class="btn btn-primary" />
 		</form>
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
-		<img src="">
 	</div>
 </body>
 </html>

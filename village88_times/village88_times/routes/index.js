@@ -73,7 +73,7 @@ module.exports = function Route(app, mysql, db){
 
 	app.io.route("check_last_clock_record", function(req){
 		get_last_record = function(errors, results, fields){
-			if(results[0].clock_in_time)
+			if(results[0])
 				req.io.emit("clock_record_form_values", {clock_button_value: "Clock-out",
 														 description: results[0].description
 														});

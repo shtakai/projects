@@ -1,0 +1,2771 @@
+  [1m[36m (172.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (207.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20141007234651)
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141007234651"]]
+  [1m[35m (211.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAttachmentAvatarToUsers (20141007234952)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (3.0ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_name" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "users" ADD "avatar_content_type" varchar(255)
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "users" ADD "avatar_updated_at" datetime
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141007234952"]]
+  [1m[35m (171.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2014-10-08 08:02:10 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/assets/rails.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (213.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (533.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 08:02:16 +0800
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 124ms
+
+NoMethodError (undefined method `attr_accessible' for #<Class:0x4883958>):
+  app/models/user.rb:4:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:3:in `new'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (191.0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2014-10-08 08:03:32 +0800
+
+SyntaxError (C:/Sites/paperclip/config/routes.rb:8: syntax error, unexpected tASSOC, expecting keyword_end
+  root => 'users/new'
+         ^):
+  config/routes.rb:8: syntax error, unexpected tASSOC, expecting keyword_end
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (118.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:03:43 +0800
+
+SyntaxError (C:/Sites/paperclip/config/routes.rb:8: syntax error, unexpected ':', expecting keyword_end
+  root: 'users/new'
+       ^):
+  config/routes.rb:8: syntax error, unexpected ':', expecting keyword_end
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (113.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:03:58 +0800
+
+SyntaxError (C:/Sites/paperclip/config/routes.rb:8: syntax error, unexpected tASSOC, expecting keyword_end
+  root => 'users#new'
+         ^):
+  config/routes.rb:8: syntax error, unexpected tASSOC, expecting keyword_end
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (202.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:05:10 +0800
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 44ms
+
+NoMethodError (undefined method `attr_accessible' for #<Class:0x4b3e478>):
+  app/models/user.rb:4:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:3:in `new'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (111.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:26:11 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (101.0ms)
+Completed 500 Internal Server Error in 148ms
+
+ActionView::Template::Error (undefined method `input' for #<ActionView::Helpers::FormBuilder:0x4b96d50>):
+    1: <%= form_for @user, :url => users_path, :html => {:multipart => true} do |f| %>
+    2: 	<%= f.input :first_name %>
+    3: 	<%= f.input :last_name %>
+    4: 	<%= f.input :email %>
+    5: 	<%= f.file_field :avatar %>
+  app/views/users/new.html.erb:2:in `block in _app_views_users_new_html_erb__77687207_39522048'
+  app/views/users/new.html.erb:1:in `_app_views_users_new_html_erb__77687207_39522048'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:27:39 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (84.0ms)
+Completed 200 OK in 3468ms (Views: 3463.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:27:43 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:28:42 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 193ms (Views: 190.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:28:45 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 140ms (Views: 138.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:31:07 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 323ms (Views: 321.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:31:10 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 261ms (Views: 259.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:52:28 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 300ms (Views: 297.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:52:28 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:29 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:52:48 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 199ms (Views: 197.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:52:49 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:53:20 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (156.0ms)
+Completed 200 OK in 369ms (Views: 367.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:21 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:53:49 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 162ms (Views: 158.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:53:50 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 246ms (Views: 242.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:14 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:54:21 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 237ms (Views: 236.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:22 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 185ms (Views: 184.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:33 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:54:40 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 257ms (Views: 255.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:54:41 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 211ms (Views: 209.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:58:56 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:59:19 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 250ms (Views: 248.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:20 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 246ms (Views: 244.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:29 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:59:39 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 200ms (Views: 198.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:40 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 203ms (Views: 201.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 08:59:58 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 09:00:05 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 197ms (Views: 195.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:00:06 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 09:01:53 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Rozen", "last_name"=>"Macapagal", "email"=>"rmacapagal@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x34ae608 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-7212-a5qv4x>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 3ms
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/controllers/users_controller.rb:7:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (141.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 09:03:46 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 233ms (Views: 215.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:03:46 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:03:46 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:03:46 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:03:47 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:03:47 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:03:47 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:03:47 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 09:03:57 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Rozen", "last_name"=>"Macapagal", "email"=>"rmacapagal@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x4b40698 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-7212-s7a10n>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 73ms
+
+Paperclip::Errors::MissingRequiredValidatorError (Paperclip::Errors::MissingRequiredValidatorError):
+  app/controllers/users_controller.rb:7:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (156.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 09:09:15 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Rozen", "last_name"=>"Macapagal", "email"=>"rmacapagal@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x4b62e98 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-7212-1rw6dwe>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-7212-1f1oe3g.png"
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-7212-126osgc.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 01:09:15.423875"], ["created_at", "2014-10-08 01:09:16.637945"], ["email", "rmacapagal@village88.com"], ["first_name", "Rozen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 01:09:16.637945"]]
+  [1m[35m (240.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 1813ms (ActiveRecord: 247.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-10-08 09:09:17 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 2ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  app/controllers/users_controller.rb:22:in `user_params'
+  app/controllers/users_controller.rb:17:in `show'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (140.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 226ms (Views: 223.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:09:57 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 09:10:12 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Rozen", "last_name"=>"Macapagal", "email"=>"rmacapagal@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x3e9f7f0 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-7212-1wpwrws>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-7212-16jswo5.png"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-7212-ae231i.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 01:10:12.841159"], ["created_at", "2014-10-08 01:10:13.442194"], ["email", "rmacapagal@village88.com"], ["first_name", "Rozen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 01:10:13.442194"]]
+  [1m[36m (196.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 1071ms (ActiveRecord: 198.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:10:13 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 400 Bad Request in 2ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  app/controllers/users_controller.rb:22:in `user_params'
+  app/controllers/users_controller.rb:17:in `show'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (139.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:12:22 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 404 Not Found in 19ms
+
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  app/controllers/users_controller.rb:17:in `show'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (159.0ms)
+  [1m[36mUser Load (13.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:13:56 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 262ms (Views: 214.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:13:57 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:14:48 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 221ms (Views: 210.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:14:49 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:15:06 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 214ms (Views: 208.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:15:06 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:15:07 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 220ms (Views: 213.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+
+Started GET "/system/users/avatars/000/000/002/thumb/ninja.png?1412730612" for 127.0.0.1 at 2014-10-08 09:16:38 +0800
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/000/000/002/thumb/ninja.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (123.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:16:44 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:16:44 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:17:05 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 267ms (Views: 258.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:06 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:17:27 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 240ms (Views: 134.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+
+Started GET "/system/users/avatars/000/000/002/thumb/ninja.png?1412730612" for 127.0.0.1 at 2014-10-08 09:17:28 +0800
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/000/000/002/thumb/ninja.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (177.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:17:47 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 24ms
+
+NoMethodError (undefined method `before_image_post_process' for #<Class:0x4b63a50>):
+  app/models/user.rb:5:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:17:in `show'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (149.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:17:56 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 342ms (Views: 203.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:57 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:17:58 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:18:36 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 239ms (Views: 232.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:18:37 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 09:21:42 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 182ms (Views: 177.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:21:43 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 198ms (Views: 191.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:21 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:22:34 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 169ms (Views: 161.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:35 +0800
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-10-08 09:22:50 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 231ms (Views: 177.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 09:22:51 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 11:48:17 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (402.0ms)
+Completed 200 OK in 1489ms (Views: 1325.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 11:48:23 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 137ms (Views: 135.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 11:48:23 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 11:48:23 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 11:48:24 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 11:48:24 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 11:48:24 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 11:48:24 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 11:48:24 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 11:48:52 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x3a138b0 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-9156-1tcdcy>, @original_filename="doctor's_appointment.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"doctor's_appointment.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 153ms (Views: 150.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:07:17 +0800
+
+SyntaxError (C:/Sites/paperclip/app/controllers/users_controller.rb:21: syntax error, unexpected keyword_end, expecting $end):
+  app/controllers/users_controller.rb:21: syntax error, unexpected keyword_end, expecting $end
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (1282.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:07:29 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (99.0ms)
+Completed 200 OK in 325ms (Views: 300.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:30 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:07:32 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  app/controllers/users_controller.rb:7:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (141.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 12:07:42 +0800
+
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  actionpack (4.1.5) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:07:47 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 191ms (Views: 172.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:48 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:07:50 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 13ms
+
+ActionView::MissingTemplate (Missing template users/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "C:/Sites/paperclip/app/views"
+):
+  actionview (4.1.5) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.5) lib/action_view/lookup_context.rb:124:in `find'
+  C:in `find_template'
+  actionview (4.1.5) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.5) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.5) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.5) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.5) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.1.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+  activesupport (4.1.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.5) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:07:58 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 241ms (Views: 217.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:07:59 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:08:00 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `errors' for nil:NilClass):
+  app/controllers/users_controller.rb:9:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (150.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 236ms (Views: 215.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:17 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:18 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:18 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:08:19 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `errors' for "asd":String):
+  app/controllers/users_controller.rb:9:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (133.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:08:52 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 226ms (Views: 208.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:08:53 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:08:55 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+Completed 500 Internal Server Error in 10ms
+
+ActionView::MissingTemplate (Missing template users/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "C:/Sites/paperclip/app/views"
+):
+  actionview (4.1.5) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.5) lib/action_view/lookup_context.rb:124:in `find'
+  C:in `find_template'
+  actionview (4.1.5) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.5) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.5) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.5) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.5) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.1.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+  activesupport (4.1.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.1.5) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.5) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 164ms (Views: 146.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:24 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:09:26 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 227ms (Views: 223.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:27 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:09:29 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Z", "last_name"=>"m", "email"=>""}, "commit"=>"submit"}
+  Rendered users/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 170ms (Views: 166.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:30 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:09:39 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 224ms (Views: 222.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:40 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:09:41 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 161ms (Views: 159.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:42 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:09:57 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 223ms (Views: 171.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:09:58 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 12:10:00 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>""}, "commit"=>"submit"}
+  Rendered users/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 200ms (Views: 191.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:01 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 12:10:52 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 266ms (Views: 239.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 12:10:53 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:35:47 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (83.0ms)
+Completed 200 OK in 869ms (Views: 693.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:35:51 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:36:06 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 284ms (Views: 280.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:36:07 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:36:09 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (246.0ms)
+Completed 200 OK in 443ms (Views: 440.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:36:14 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 162ms (Views: 158.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 165ms (Views: 160.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:37:07 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:40:15 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 243ms (Views: 225.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:40:26 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x5266ce0 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-k22v22>, @original_filename="doctor's_appointment.bmml", @content_type="application/xml", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"doctor's_appointment.bmml\"\r\nContent-Type: application/xml\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-195a4al.bmml"
+[paperclip] Content Type Spoof: Filename doctor's_appointment.bmml ([]), content type discovered from file command: text/plain. See documentation to allow this combination.
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-1xqz63w.bmml"
+[paperclip] Content Type Spoof: Filename doctor's_appointment.bmml ([]), content type discovered from file command: text/plain. See documentation to allow this combination.
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000new
+Completed 302 Found in 2612ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 153ms (Views: 150.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:40:33 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:40:43 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x4a594b8 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-9uq817>, @original_filename="doctor's_appointment.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"doctor's_appointment.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-18eaph9.png"
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-1mro3j4.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["avatar_content_type", "image/png"], ["avatar_file_name", "doctor's_appointment.png"], ["avatar_file_size", 194474], ["avatar_updated_at", "2014-10-08 06:40:43.261395"], ["created_at", "2014-10-08 06:40:44.087442"], ["email", "zen.macapagal@gmail.com"], ["first_name", "Zen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 06:40:44.087442"]]
+  [1m[35m (262.0ms)[0m  commit transaction
+Redirected to http://localhost:3000index
+Completed 302 Found in 1346ms (ActiveRecord: 264.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:41:06 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x4bf7f50 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-1iixkzl>, @original_filename="doctor's_appointment.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"doctor's_appointment.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-evww23.png"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-1lmnscl.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["avatar_content_type", "image/png"], ["avatar_file_name", "doctor's_appointment.png"], ["avatar_file_size", 194474], ["avatar_updated_at", "2014-10-08 06:41:07.018753"], ["created_at", "2014-10-08 06:41:07.668791"], ["email", "zen.macapagal@gmail.com"], ["first_name", "Zen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 06:41:07.668791"]]
+  [1m[36m (189.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000index
+Completed 302 Found in 1119ms (ActiveRecord: 196.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:41:10 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 291ms (Views: 286.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:41:11 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:41:20 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x2b2e1d8 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-1jc84sb>, @original_filename="doctor's_appointment.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"doctor's_appointment.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-ptf65i.png"
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/714da89411391b5b010b15a1316d1f1220141008-8792-1d92jhk.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["avatar_content_type", "image/png"], ["avatar_file_name", "doctor's_appointment.png"], ["avatar_file_size", 194474], ["avatar_updated_at", "2014-10-08 06:41:20.824543"], ["created_at", "2014-10-08 06:41:21.470580"], ["email", "zen.macapagal@gmail.com"], ["first_name", "Zen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 06:41:21.470580"]]
+  [1m[35m (363.0ms)[0m  commit transaction
+Redirected to http://localhost:3000index
+Completed 302 Found in 1310ms (ActiveRecord: 366.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:41:26 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 217ms (Views: 214.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:42:05 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 177ms (Views: 158.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 14:42:23 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 216ms (Views: 213.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:42:28 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 158ms (Views: 155.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:42:48 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"KB", "last_name"=>"Tonel", "email"=>"ktonel@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x3f301c8 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-1ye15jj>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-1gbvh8y.png"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-1w0w9zd.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 06:42:48.219542"], ["created_at", "2014-10-08 06:42:48.807575"], ["email", "ktonel@village88.com"], ["first_name", "KB"], ["last_name", "Tonel"], ["updated_at", "2014-10-08 06:42:48.807575"]]
+  [1m[36m (407.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000users#index
+Completed 302 Found in 1290ms (ActiveRecord: 409.0ms)
+
+
+Started GET "/users/getAPI" for 127.0.0.1 at 2014-10-08 14:42:55 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"getAPI"}
+  Rendered users/show.html.erb within layouts/application (123.0ms)
+Completed 500 Internal Server Error in 141ms
+
+ActionView::Template::Error (undefined method `first_name' for nil:NilClass):
+    1: <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+    2: <p>Email: <%= @user.email %></p>
+    3: <%= image_tag @user.avatar.url %>
+    4: 
+  app/views/users/show.html.erb:1:in `_app_views_users_show_html_erb___5876918_39821160'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (131.0ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-10-08 14:42:58 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 231ms (Views: 226.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:42:59 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:43:39 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 182ms (Views: 161.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:43:49 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Oliver", "last_name"=>"Ro", "email"=>""}, "commit"=>"submit"}
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "users" ("created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-08 06:43:49.293035"], ["email", ""], ["first_name", "Oliver"], ["last_name", "Ro"], ["updated_at", "2014-10-08 06:43:49.293035"]]
+  [1m[36m (545.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000index
+Completed 302 Found in 563ms (ActiveRecord: 549.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 187ms (Views: 184.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:43:53 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:43:54 +0800
+
+
+Started GET "/avatars/original/missing.png" for 127.0.0.1 at 2014-10-08 14:43:54 +0800
+
+ActionController::RoutingError (No route matches [GET] "/avatars/original/missing.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (53.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (18.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (274.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:43:59 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 183ms (Views: 181.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:46:28 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (87.0ms)
+Completed 200 OK in 238ms (Views: 216.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:46:29 +0800
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:46:43 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Oliver", "last_name"=>"Rosales", "email"=>"jrosales@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x49a0a90 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-13gg2th>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-1gndv0y.png"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-t61ler.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 06:46:43.604005"], ["created_at", "2014-10-08 06:46:44.711068"], ["email", "jrosales@village88.com"], ["first_name", "Oliver"], ["last_name", "Rosales"], ["updated_at", "2014-10-08 06:46:44.711068"]]
+  [1m[36m (192.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000index
+Completed 302 Found in 1477ms (ActiveRecord: 194.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (67.0ms)
+Completed 200 OK in 216ms (Views: 198.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:03 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:04 +0800
+
+
+Started GET "/avatars/original/missing.png" for 127.0.0.1 at 2014-10-08 14:51:04 +0800
+
+ActionController::RoutingError (No route matches [GET] "/avatars/original/missing.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (168.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 14:51:11 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 195ms (Views: 193.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 14:51:28 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Oliver", "last_name"=>"Rosales", "email"=>"jrosales@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x524d978 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-1z01fsp>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-1umzh8t.png"
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-1lkhrfz.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 06:51:28.496300"], ["created_at", "2014-10-08 06:51:29.027330"], ["email", "jrosales@village88.com"], ["first_name", "Oliver"], ["last_name", "Rosales"], ["updated_at", "2014-10-08 06:51:29.027330"]]
+  [1m[36m (165.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 974ms (ActiveRecord: 168.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 14:51:29 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 188ms (Views: 185.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+
+Started GET "/avatars/original/missing.png" for 127.0.0.1 at 2014-10-08 14:51:30 +0800
+
+ActionController::RoutingError (No route matches [GET] "/avatars/original/missing.png"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (140.0ms)
+  [1m[36mSQL (224.0ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:01:44 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 226ms (Views: 207.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:01:45 +0800
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 196ms (Views: 193.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:19 +0800
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:02:23 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 280ms (Views: 276.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:23 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:23 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:23 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:23 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:24 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:24 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:24 +0800
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:02:28 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 278ms (Views: 277.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:29 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:32 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:32 +0800
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:02:52 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 285ms (Views: 278.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:02:53 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 15:02:58 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 252ms (Views: 246.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 15:03:37 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Rozen", "last_name"=>"Macapagal", "email"=>"rmacapagal@village88.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x52adf90 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-1jnacbf>, @original_filename="ninja.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"ninja.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-16hu13o.png"
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/3899dcbab79f92af727c2190bbd8abc520141008-8792-kuwhgy.png"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["avatar_content_type", "image/png"], ["avatar_file_name", "ninja.png"], ["avatar_file_size", 56594], ["avatar_updated_at", "2014-10-08 07:03:37.781013"], ["created_at", "2014-10-08 07:03:38.386047"], ["email", "rmacapagal@village88.com"], ["first_name", "Rozen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 07:03:38.386047"]]
+  [1m[35m (174.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users
+Completed 302 Found in 1122ms (ActiveRecord: 176.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:03:38 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 181ms (Views: 177.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:03:39 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 15:03:45 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 233ms (Views: 231.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-08 15:04:03 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xchi0gTFRPSj+6ibCjVphCVxZ1iJS9V0X7wfM+NWZCA=", "user"=>{"first_name"=>"Zen", "last_name"=>"Macapagal", "email"=>"zen.macapagal@gmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x527a150 @tempfile=#<File:C:/Users/rozen/AppData/Local/Temp/RackMultipart20141008-8792-182722s>, @original_filename="owl.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"owl.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"submit"}
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/50f8b6c98b0f9a271a562632405ae63d20141008-8792-ea57zy.jpg"
+  [1m[35m (0.0ms)[0m  begin transaction
+Command :: file -b --mime "C:/Users/rozen/AppData/Local/Temp/50f8b6c98b0f9a271a562632405ae63d20141008-8792-1ld61xa.jpg"
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["avatar_content_type", "image/jpeg"], ["avatar_file_name", "owl.jpg"], ["avatar_file_size", 51591], ["avatar_updated_at", "2014-10-08 07:04:04.018513"], ["created_at", "2014-10-08 07:04:04.661550"], ["email", "zen.macapagal@gmail.com"], ["first_name", "Zen"], ["last_name", "Macapagal"], ["updated_at", "2014-10-08 07:04:04.661550"]]
+  [1m[35m (193.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users
+Completed 302 Found in 1155ms (ActiveRecord: 195.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 260ms (Views: 255.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:04:05 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 15:04:10 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 247ms (Views: 245.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 15:05:08 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 260ms (Views: 257.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 15:05:11 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 189ms (Views: 186.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-08 15:05:12 +0800
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-08 15:05:54 +0800
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 251ms (Views: 247.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-08 15:05:55 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 184ms (Views: 180.0ms | ActiveRecord: 1.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
